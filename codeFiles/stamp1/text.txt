@@ -1,7 +1,0 @@
-<h4> This is the text page </h4>
-<p> maybe this works </p>
-
-this = 5
-
-if this > 3:
-    print("This is greater than 3")

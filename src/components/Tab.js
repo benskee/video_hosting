@@ -3,10 +3,16 @@ import React, { Component } from 'react'
 export default class Tab extends Component {
     render() {
         const tab = this.props.tab;
+        const currentTime = this.props.currentTime;
+        const tabData = this.props.tabData;
+        var startDisplay = "none"
+        if (tabData[tab].start <= currentTime) {
+            startDisplay = "block"
+        }
 
         return (
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id={ tab.number + "-tab"} data-bs-toggle="tab" data-bs-target={"#" + tab.number} type="button" role="tab" aria-controls={tab.number} aria-selected="false">{tab.name}</button>
+                <li class="nav-item" role="presentation" style={{ display: startDisplay}}>
+                    <button class="nav-link" id={ tab + "-tab"} data-bs-toggle="tab" data-bs-target={"#" + tab} type="button" role="tab" aria-controls={tab} aria-selected="false">{tab}</button>
                 </li>
         )
     }
