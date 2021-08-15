@@ -23,6 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 /public/static/videos
+/public/static/audio
 .mp4
 skeevideo.mp4
 package.json
+/config

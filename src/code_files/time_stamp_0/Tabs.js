@@ -17,7 +17,8 @@ export default class Home extends Component {
         }
     }
 `,
-                6: `import React, { Component } from 'react'
+                6: `import freedom from 'bitcoin'
+                import React, { Component } from 'react'
 import axios from "axios";
 import RacerRows from '../components/RacerRows';
 

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import CodeTutorial from './views/CodeTutorial';
 import Home from './views/Home';
-import Header from './components/Header';
+import Chart from './views/Chart';
+import Header from './components/layout/Header';
 
 export default class App extends Component {
   render() {
@@ -12,7 +14,9 @@ export default class App extends Component {
         </header>
         <main className="container">
           <Switch>
+              <Route exact path="/code" render={() => <CodeTutorial />} />
               <Route exact path="/" render={() => <Home />} />
+              <Route exact path="/chart" render={() => <Chart />} />
           </Switch>
         </main>
       </div>
