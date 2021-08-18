@@ -30,7 +30,10 @@ export default class CodeTutorial extends Component {
 
     render() {
         function adjust(sec) {
-            if (sec < 23) {
+            if (sec === 0) {
+                return -1;
+            }
+            else if (sec < 23) {
                 return 0;
             }
             else {

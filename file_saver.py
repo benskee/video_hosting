@@ -11,9 +11,9 @@ def save_files():
     dir_name = f"./src/code_files/time_stamp_{t}"
     os.mkdir(dir_name)
 
-    for (root, dirnames, filenames) in os.walk('src/components'):
+    for (root, dirnames, filenames) in os.walk('src/components/code_tutorial'):
         for file in filenames:
-            copy(f'src/components/{file}', f"{dir_name}/{file}")
+            copy(f'src/components/code_tutorial/{file}', f"{dir_name}/{file}")
 
 
 schedule.every(3).seconds.do(save_files)
