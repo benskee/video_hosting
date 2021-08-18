@@ -24,11 +24,12 @@ export default class Chart extends Component {
         const currentTime = Math.max.apply(Math, Object.keys(this.state.chartData).filter(function (x) { return x <= playedSeconds; }));
         return (
             <div className="container m-2">
-                <ReactPlayer url="./static/audio/macroVoices.mp3" onProgress={this.handleProgress} controls />
+                <h1>Coming Soon!</h1>
+                {/* <ReactPlayer url="./static/audio/macroVoices.mp3" onProgress={this.handleProgress} controls />
                 <br/>
                 <div>
                     <img src={`./static/chartDeck/cd${this.state.chartData[currentTime]}.png`} width="200" alt="" />
-                </div>
+                </div> */}
             </div>
         );
     }

@@ -19,7 +19,7 @@ for s in stamps:
                     "start": ts
                 }
             f = open(f'src/code_files/{s}/{file}', "r")
-            tab_dict[name][ts] = str(ts)*5 + " " + f.read()
+            tab_dict[name][ts] = f.read()
 
 
 with open('./src/tab_dict.json', 'w', encoding='utf-8') as f:

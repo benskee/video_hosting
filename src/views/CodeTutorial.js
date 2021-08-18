@@ -3,12 +3,18 @@ import ReactPlayer from 'react-player'
 import TextList from '../components/code_tutorial/TextList';
 import TabList from '../components/code_tutorial/TabList';
 
-export default class Home extends Component {
+export default class CodeTutorial extends Component {
     constructor() {
         super();
+        function range(start, end) {
+            var len = end - start + 1;
+            var a = new Array(len);
+            for (let i = 0; i < len; i++) a[i] = (start + i)*3;
+            return a;
+        }
         this.state = {
             tabData: require('../tab_dict'),
-            stampList: [0,3,6]
+            stampList : range(0, 50)
         }
     }
     handleProgress = state => {
@@ -23,14 +29,23 @@ export default class Home extends Component {
     }
 
     render() {
-        const playedSeconds = this.state.playedSeconds;
-        const stampList = this.state.stampList;
+        function adjust(sec) {
+            if (sec < 23) {
+                return 0;
+            }
+            else {
+                return sec - 22;
+            }
+        }
+        const playedSeconds = adjust(this.state.playedSeconds);
+        const stampList = this.state.stampList
         const currentTime = Math.max.apply(Math, stampList.filter(function (x) { return x <= playedSeconds }));
         const vals = Object.keys(this.state.tabData)
         return (
             <div className="container m-2">
                 <div>
-                    <ReactPlayer url="./static/videos/skeevideo.mp4" onProgress={this.handleProgress} controls />
+                    {/* <ReactPlayer url="https://youtu.be/4RVfZKedCpI" onProgress={this.handleProgress} controls /> */}
+                    <ReactPlayer url="./static/videos/first_video_tutorial.mp4" onProgress={this.handleProgress} controls />
                 </div>
                 <div className="border">
                     <TabList currentTime={currentTime} vals={vals} tabData={this.state.tabData}/>
