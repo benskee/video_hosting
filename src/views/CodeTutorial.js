@@ -44,8 +44,7 @@ export default class CodeTutorial extends Component {
         return (
             <div className="container m-2">
                 <div>
-                    {/* <ReactPlayer url="https://youtu.be/4RVfZKedCpI" onProgress={this.handleProgress} controls /> */}
-                    <ReactPlayer url="./static/videos/first_video_tutorial.mp4" onProgress={this.handleProgress} controls />
+                    <ReactPlayer url="https://youtu.be/4RVfZKedCpI" onProgress={this.handleProgress} controls />
                 </div>
                 <div className="border">
                     <TabList currentTime={currentTime} vals={vals} tabData={this.state.tabData}/>
