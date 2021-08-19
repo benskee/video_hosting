@@ -6,8 +6,8 @@ export default class Text extends Component {
         const tab = this.props.tab;
         return (
                 
-                <div class="tab-pane fade" id={tab} role="tabpanel" aria-labelledby={tab + "-tab"}>
-                    <h1>{tab}</h1>
+            <div class="tab-pane fade" style={{ margin: '10px' }} id={tab} role="tabpanel" aria-labelledby={tab + "-tab"}>
+                    <h1>{tab}</h1> <br/>
                     <pre><code className="language-markup">
                         {this.props.tabData[currentTime]}
                     </code></pre>
