@@ -6,7 +6,8 @@ export default class Chart extends Component {
     constructor() {
         super();
         this.state = {
-            chartData: require('../components/chart/chartDeck.json')
+            chartData: require('../components/chart/chartDeck.json'),
+            playedSeconds: 0
         };
     }
     handleProgress = state => {
@@ -21,15 +22,19 @@ export default class Chart extends Component {
     }
     render() {
         const playedSeconds = this.state.playedSeconds;
+        const chartData = this.state.chartData
         const currentTime = Math.max.apply(Math, Object.keys(this.state.chartData).filter(function (x) { return x <= playedSeconds; }));
+        const slide = chartData[currentTime]["slide"]
+        const link = chartData[currentTime]["link"]
         return (
             <div className="container m-2">
-                <h1>Coming Soon!</h1>
-                {/* <ReactPlayer url="./static/audio/macroVoices.mp3" onProgress={this.handleProgress} controls />
+                <ReactPlayer url="https://soundcloud.com/ben-skee-378863056/chart-deck" onProgress={this.handleProgress} controls />
                 <br/>
-                <div>
-                    <img src={`./static/chartDeck/cd${this.state.chartData[currentTime]}.png`} width="200" alt="" />
-                </div> */}
+                <a href={link} target="_blank">
+                    <div style={{ height: "500px"}}>
+                        <img src={`./static/chartDeck/${slide}_bitstonker.png`} alt="" />
+                    </div>
+                </a>
             </div>
         );
     }
