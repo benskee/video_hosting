@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
 import TextList from '../components/code_tutorial/TextList';
 import TabList from '../components/code_tutorial/TabList';
 

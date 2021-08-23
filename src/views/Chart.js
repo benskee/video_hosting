@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/soundcloud'
 
 
 export default class Chart extends Component {
