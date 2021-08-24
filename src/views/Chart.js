@@ -6,7 +6,7 @@ export default class Chart extends Component {
     constructor() {
         super();
         this.state = {
-            chartData: require('../components/chart/chartDeck.json'),
+            chartData: require('../dicts/chartDict.json'),
             playedSeconds: 0
         };
     }

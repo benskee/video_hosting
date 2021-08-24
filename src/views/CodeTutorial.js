@@ -13,7 +13,7 @@ export default class CodeTutorial extends Component {
             return a;
         }
         this.state = {
-            tabData: require('../tab_dict'),
+            tabData: require('../dicts/codeDict'),
             stampList : range(0, 50)
         }
     }

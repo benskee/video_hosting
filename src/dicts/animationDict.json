@@ -1,0 +1,37 @@
+{
+    "0": {
+        "div1": "",
+        "gif": "",
+        "link": "#"
+    },
+    "45": {
+        "div1": "Fifth Wall: The division between the fictional world depicted, and the actual actors, props, etc.",
+        "gif": "",
+        "link": "#"
+    },
+    "69": {
+        "div1": "",
+        "gif": "",
+        "link": "#"
+    },
+    "88.8": {
+        "div1": "A fairy (also fay, fae, fey, fair folk, or faerie) is a type of mythical being or legendary creature found in the folklore of multiple European cultures (including Celtic, Slavic, German, English, and French folklore), a form of spirit, often described as metaphysical, supernatural, or preternatural.",
+        "gif": "./static/animations/fairy.gif",
+        "link": "#"
+    },
+    "98": {
+        "div1": "",
+        "gif": "",
+        "link": "#"
+    },
+    "105": {
+        "div1": "",
+        "gif": "./static/animations/dopey_in.gif",
+        "link": "https://www.linkedin.com/in/ben-skee-software-engineer/"
+    },
+    "117": {
+        "div1": "",
+        "gif": "",
+        "link": "#"
+    }
+}

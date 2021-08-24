@@ -5,6 +5,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="container m-2">
+                <h1 style={{ textAlign: 'center' }}>Welcome to Fifth Wall Media<br /><br /></h1>
                 <div className='row'>
                     <div className="col-md-3 col-sm-6">
                         <div className="container mt-4">
