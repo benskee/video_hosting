@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import Gif from '../components/animation/Gif'
+import DOMPurify from "dompurify"
 
 export default class Animation extends Component {
     constructor() {
@@ -42,15 +43,13 @@ export default class Animation extends Component {
                     
                     <div className="row">
                         <div className="col-12 row">
-                            <div className="container col-8 mt-3">
-                                <ReactPlayer url="https://youtu.be/0ZuHI-VW6oo" height="450px" width="800px" onProgress={this.handleProgress} controls />
+                            <div className="container col-8 mt-3 py-2 border border-dark">
+                                <ReactPlayer url="https://youtu.be/0ZuHI-VW6oo" width="100%" onProgress={this.handleProgress} controls />
+                                <div className= "container mw-100 mt-2 border border-dark" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(div1) }}/>
                             </div>
                             <Gif currentTime={currentTime} animationData={animationData}/>
                         </div>
                     </div>
-                </div>
-                <div className="container col-6 float-start mt-3">
-                    <p>{div1}</p>
                 </div>
             </div>
         );

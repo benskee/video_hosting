@@ -1,11 +1,26 @@
 {
     "0": {
+        "div1": "<h4>Play the video above to see a demonstration of the Fifth Wall Media platform.</h4>",
+        "gif": "",
+        "link": "#"
+    },
+    "0.001": {
+        "div1": "",
+        "gif": "",
+        "link": "#"
+    },
+    "10": {
+        "div1": "<img className='img-fluid' style='max-width: 100%' src=\"./static/animations/youtube_layout.png\">",
+        "gif": "",
+        "link": "#"
+    },
+    "25": {
         "div1": "",
         "gif": "",
         "link": "#"
     },
     "45": {
-        "div1": "Fifth Wall: The division between the fictional world depicted, and the actual actors, props, etc.",
+        "div1": "<p>Fifth Wall: The division between the fictional world depicted, and the actual actors, props, etc. </br></br> Breaking the fourth wall brings the actors into the same realm as the audience. Breaking the fifth wall connects the actors to the outside world. This is often used to connect the actors to a previous project they have worked on. You can find some examples <a href=\"https://en.wiktionary.org/wiki/Citations:fifth_wall\" target=\"_blank\">here</a>. In the context of Fifth Wall Media we are connecting the video to both the viewer and the entire internet.</p>",
         "gif": "",
         "link": "#"
     },
@@ -15,7 +30,7 @@
         "link": "#"
     },
     "88.8": {
-        "div1": "A fairy (also fay, fae, fey, fair folk, or faerie) is a type of mythical being or legendary creature found in the folklore of multiple European cultures (including Celtic, Slavic, German, English, and French folklore), a form of spirit, often described as metaphysical, supernatural, or preternatural.",
+        "div1": "<p>A fairy (also fay, fae, fey, fair folk, or faerie) is a type of mythical being or legendary creature found in the folklore of multiple European cultures (including Celtic, Slavic, German, English, and French folklore), a form of spirit, often described as metaphysical, supernatural, or preternatural. <a href=\"https://en.wikipedia.org/wiki/Fairy\" target=\"_blank\">Fairy Wikipedia</a></p>",
         "gif": "./static/animations/fairy.gif",
         "link": "#"
     },

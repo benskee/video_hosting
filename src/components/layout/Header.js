@@ -5,7 +5,7 @@ export default class Header extends Component {
     render() {
         return (
             <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-                <Link className="navbar-brand" to="/">Fifth Wall Media</Link>
+                <Link className="navbar-brand" to="/"><img alt="" className="img-fluid pic-1" style={{ height: '40px' }} src={'/fifth_wall_logo.png'}></img><span className= 'm-4'>Fifth Wall Media</span></Link>
                 <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
