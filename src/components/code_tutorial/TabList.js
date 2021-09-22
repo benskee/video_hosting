@@ -9,7 +9,7 @@ export default class TabList extends Component {
         return (
             <div>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
-                    {vals.map(tab => <Tab tab={tab} tabData={tabData} currentTime={currentTime}/>)}
+                    {vals.map(tab => <Tab key={tab} tab={tab} tabData={tabData} currentTime={currentTime}/>)}
                 </ul>
             </div>
         )

@@ -11,15 +11,14 @@ export default class Chart extends Component {
         };
     }
     handleProgress = state => {
-        {
-            this.setState({
-                playedSeconds: state.playedSeconds
-            });
-        }
+        this.setState({
+            playedSeconds: state.playedSeconds
+        });
+        
         if (!this.state.seeking) {
             this.setState(state);
         }
-    }
+    };
     render() {
         const playedSeconds = this.state.playedSeconds;
         const chartData = this.state.chartData
@@ -30,7 +29,7 @@ export default class Chart extends Component {
             <div className="container m-2">
                 <ReactPlayer url="https://soundcloud.com/ben-skee-378863056/chart-deck" onProgress={this.handleProgress} controls />
                 <br/>
-                <a href={link} target="_blank">
+                <a href={link} target="_blank" rel="noopener noreferrer">
                     <div style={{ height: "500px"}}>
                         <img src={`./static/chartDeck/${slide}_bitstonker.png`} alt="" />
                     </div>

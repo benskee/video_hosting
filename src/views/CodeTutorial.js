@@ -18,11 +18,9 @@ export default class CodeTutorial extends Component {
         }
     }
     handleProgress = state => {
-        {
-            this.setState({
-                playedSeconds: state.playedSeconds
-            })
-        }
+        this.setState({
+            playedSeconds: state.playedSeconds
+        })
         if (!this.state.seeking) {
             this.setState(state)
         }

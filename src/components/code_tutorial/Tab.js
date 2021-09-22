@@ -11,8 +11,8 @@ export default class Tab extends Component {
         }
 
         return (
-                <li class="nav-item" role="presentation" style={{ display: startDisplay}}>
-                    <button class="nav-link" id={ tab + "-tab"} data-bs-toggle="tab" data-bs-target={"#" + tab} type="button" role="tab" aria-controls={tab} aria-selected="false">{tab}</button>
+                <li className="nav-item" role="presentation" style={{ display: startDisplay}}>
+                    <button className="nav-link" id={ tab + "-tab"} data-bs-toggle="tab" data-bs-target={"#" + tab} type="button" role="tab" aria-controls={tab} aria-selected="false">{tab}</button>
                 </li>
         )
     }
