@@ -24,6 +24,12 @@ export default class Header extends Component {
                         <li className="nav-item active">
                             <Link className="nav-link" to="/animation">Animation </Link>
                         </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="/upload">Upload</Link>
+                        </li>
+                        <li className="nav-item active">
+                            <Link className="nav-link" to="/projects">Projects</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
