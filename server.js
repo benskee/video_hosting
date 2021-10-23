@@ -6,7 +6,7 @@ connectDB();
 
 app.use(express.json({ extended: false }))
 
-app.use('/api/file', require('./api/files'));
+app.use('/api/file', require('./api/routes'));
 
 const PORT = process.env.PORT || 5000;
 

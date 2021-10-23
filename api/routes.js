@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const File = require('../routes/models/File');
+const File = require('../models/File');
 const multer = require('multer');
 var cors = require('cors');
 router.use(cors())
@@ -48,8 +48,22 @@ router.post('/', function (req, res) {
 
 router.get('/', async (req, res) => {
     try {
-        console.log('get route')
         const files = await File.find({});
+        console.log(files)
+        res.status(200).json({
+            success: true,
+            files
+        });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+        console.log(req.params)
+        const files = await File.findById(req.params._id);
         console.log(files)
         res.status(200).json({
             success: true,

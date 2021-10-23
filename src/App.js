@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
-import CodeTutorial from './views/CodeTutorial';
+import CodeTutorial from './components/codeTutorial/CodeTutorial';
 import Home from './views/Home';
 import Chart from './views/Chart';
 import Animation from './views/Animation';
@@ -23,6 +23,7 @@ export default class App extends Component {
               <Route exact path="/animation" render={() => <Animation />} />
               <Route exact path="/upload" render={() => <Upload />} />
               <Route exact path="/projects" render={() => <ProjectList />} />
+              <Route exact path="/projects/code/:id" render={() => <CodeTutorial />} />
           </Switch>
         </main>
       </div>
