@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const FileSchema = new mongoose.Schema({
-    filename: {
+    fileName: {
         type: String,
         required: true
     },
@@ -9,20 +9,24 @@ const FileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    username: {
+    userName: {
         type: String,
         required: true
     },
-    youtubeURL: {
+    mediaURL: {
         type: String,
         required: true
     },
-    projectname: {
+    projectName: {
         type: String,
         required: true
     },
-    projecttype: {
+    projectType: {
         type: String,
+        required: true
+    },
+    timeAdjust: {
+        type: Number,
         required: true
     },
     body: {

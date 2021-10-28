@@ -25,17 +25,17 @@ router.post('/', function (req, res) {
             return res.status(500).json(err);
         }
         try {
-            console.log(JSON.parse(req.body.userInput))
             const userInput = JSON.parse(req.body.userInput)
-            const filejson = require(`../src/uploads/${req.file.filename}`)
+            const fileJSON = require(`../src/uploads/${req.file.filename}`)
             const newFile = new File({
-                filename: req.file.originalname,
+                fileName: req.file.originalname,
                 path: req.file.path,
-                body: filejson,
-                youtubeURL: userInput.youtubeURL,
-                username: userInput.username,
-                projectname: userInput.projectname,
-                projecttype: userInput.projecttype
+                body: fileJSON,
+                mediaURL: userInput.mediaURL,
+                userName: userInput.userName,
+                projectName: userInput.projectName,
+                projectType: userInput.projectType,
+                timeAdjust: parseInt(userInput.timeAdjust)
             });
             await newFile.save();
         } catch (err) {
@@ -49,7 +49,6 @@ router.post('/', function (req, res) {
 router.get('/', async (req, res) => {
     try {
         const files = await File.find({});
-        console.log(files)
         res.status(200).json({
             success: true,
             files
@@ -62,12 +61,23 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        console.log(req.params)
-        const files = await File.findById(req.params._id);
-        console.log(files)
+        const file = await File.findById(req.params.id);
         res.status(200).json({
             success: true,
-            files
+            file
+        });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+})
+
+router.get('/animation/:id', async (req, res) => {
+    try {
+        const file = await File.findById(req.params.id);
+        res.status(200).json({
+            success: true,
+            file
         });
     } catch (err) {
         console.error(err.message);

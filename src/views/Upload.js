@@ -5,7 +5,7 @@ export default class Upload extends Component {
     state = {
         selectedFile: null,
         files: [],
-        userInput: { username: '', youtubeURL: '', projectname: '', projecttype: ''}
+        userInput: { userName: '', mediaURL: '', projectName: '', projectType: '', timeAdjust: '' }
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -28,6 +28,8 @@ export default class Upload extends Component {
         data.append('userInput', userData);
         data.append('file', this.state.selectedFile);
         await axios.post('http://localhost:5000/api/file', data);
+
+        this.props.history.push("/projects");
     };
 
     render() {
@@ -38,26 +40,30 @@ export default class Upload extends Component {
                 <h1 className="m-3 mb-5" style={{ textAlign: "center" }}>Upload Project</h1>
                 <form className="col-6 m-auto">
                     <div className="input-group mb-3">
-                    <span className="input-group-text" id="username">Username</span>
-                    <input value={userInput.username} onChange={this.handleChange} name="username" type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="username" />
+                    <span className="input-group-text" id="userName">User Name</span>
+                    <input value={userInput.userName} onChange={this.handleChange} name="userName" type="text" className="form-control" placeholder="User Name" aria-label="userName" aria-describedby="userName" />
                     </div>
                     <div className="input-group mb-3">
-                    <span className="input-group-text" id="youtubeURL">Youtube URL</span>
-                    <input value={userInput.youtubeURL} onChange={this.handleChange} name="youtubeURL" type="text" className="form-control" placeholder="Youtube URL" aria-label="youtubeURL" aria-describedby="youtubeURL" />
+                    <span className="input-group-text" id="mediaURL">Media URL</span>
+                    <input value={userInput.mediaURL} onChange={this.handleChange} name="mediaURL" type="text" className="form-control" placeholder="Media URL" aria-label="mediaURL" aria-describedby="mediaURL" />
                     </div>
                     <div className="input-group mb-3">
-                    <span className="input-group-text" id="projectname">Project Name</span>
-                    <input value={userInput.projectname} onChange={this.handleChange} name="projectname" type="text" className="form-control" placeholder="Project Name" aria-label="projectname" aria-describedby="projectname" />
+                    <span className="input-group-text" id="projectName">Project Name</span>
+                    <input value={userInput.projectName} onChange={this.handleChange} name="projectName" type="text" className="form-control" placeholder="Project Name" aria-label="projectName" aria-describedby="projectName" />
+                    </div>
+                    <div className="input-group mb-3">
+                    <span className="input-group-text" id="timeAdjust">Time Adjust</span>
+                    <input value={userInput.timeAdjust} onChange={this.handleChange} name="timeAdjust" type="text" className="form-control" placeholder="Time Adjust" aria-label="timeAdjust" aria-describedby="timeAdjust" />
                     </div>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
                             <label className="input-group-text">Project Type</label>
                         </div>
-                        <select className="custom-select" value={userInput.projecttype} onChange={this.handleChange} name="projecttype" id="projecttype">
+                        <select className="custom-select" value={userInput.projectType} onChange={this.handleChange} name="projectType" id="projectType">
                             <option >Choose...</option>
                             <option value="code">Code</option>
                             <option value="chartDeck">Chart Deck</option>
-                            <option value="annimation">Annimation</option>
+                            <option value="animation">Animation</option>
                         </select>
                     </div>
                     <div className="input-group mb-3">

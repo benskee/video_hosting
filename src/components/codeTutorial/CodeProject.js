@@ -14,18 +14,19 @@ export default class CodeTutorial extends Component {
             return a;
         }
         this.state = {
-            // tabData: require('../../dicts/codeDict'),
-            tabData: {},
+            projectData: {},
+            file: {},
             stampList : range(0, 50),
-            file: {}
         }
     }
-    componentDidMount = async () => {
-    let fileData = await axios.get('http://localhost:5000/api/file/6171e746d72457097b292eb8');
+    async componentDidMount() {
+    const project = await axios.get(`http://localhost:5000/api/file/${this.props.match.params.id}`)
     this.setState({
-        file: fileData
-    });
+        projectData: project.data.file.body,
+        file: project.data.file
+    })
     }
+
     handleProgress = state => {
         this.setState({
             playedSeconds: state.playedSeconds
@@ -35,32 +36,31 @@ export default class CodeTutorial extends Component {
         }
     }
 
-    render() {
-        console.log(this.state.file)
-        function adjust(sec) {
+    adjust(sec, timeAdjust) {
             if (sec === 0) {
                 return -1;
             }
-            else if (sec < 23) {
+            else if (sec < timeAdjust) {
                 return 0;
             }
             else {
-                return sec - 22;
+                return sec - (timeAdjust-1);
             }
         }
-        const playedSeconds = adjust(this.state.playedSeconds);
-        const stampList = this.state.stampList
-        const currentTime = Math.max.apply(Math, stampList.filter(function (x) { return x <= playedSeconds }));
-        const vals = Object.keys(this.state.tabData)
+
+    render() {
+        const { projectData, stampList, file, playedSeconds } = this.state
+        const timeStamp = this.adjust(playedSeconds, file.timeAdjust);
+        const currentTime = Math.max.apply(Math, stampList.filter(function (x) { return x <= timeStamp }));
+        const vals = Object.keys(projectData)
         return (
             <div className="container m-2">
                 <div>
-                    {/* <ReactPlayer url="https://youtu.be/4RVfZKedCpI" onProgress={this.handleProgress} controls /> */}
-                    <h3>Player</h3>
+                    <ReactPlayer url={file.mediaURL} onProgress={this.handleProgress} controls />
                 </div>
                 <div>
-                    <TabList currentTime={currentTime} vals={vals} tabData={this.state.tabData}/>
-                    <TextList currentTime={currentTime} vals={vals} tabData={this.state.tabData}/>
+                    <TabList currentTime={currentTime} vals={vals} tabData={projectData}/>
+                    <TextList currentTime={currentTime} vals={vals} tabData={projectData}/>
                 </div>
             </div>
         )

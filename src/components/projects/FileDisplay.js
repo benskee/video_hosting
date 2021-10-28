@@ -18,7 +18,6 @@ export default class FileDisplay extends Component {
             <div>
                 <ul className="row m3">
                     {this.state.files.length !== 0 && this.state.files.map(file => <Files key={file._id} file={file} />)}
-                    {console.log(this.state.files)}
                 </ul>
             </div>
         )

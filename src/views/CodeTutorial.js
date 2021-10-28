@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactPlayer from 'react-player/youtube'
-import TextList from '../components/code_tutorial/TextList';
-import TabList from '../components/code_tutorial/TabList';
+import TextList from '../components/codeTutorial/TextList';
+import TabList from '../components/codeTutorial/TabList';
 
 export default class CodeTutorial extends Component {
     constructor() {
