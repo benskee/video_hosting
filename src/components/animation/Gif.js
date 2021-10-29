@@ -16,9 +16,9 @@ export default class Gif extends Component {
         return (
             <div className="col-4" style={{ marginLeft: "-100px", marginTop: "100px" }}>
                 <img src="../../../public/static/animations/fairy.gif" alt="" />
-                <a href='#' target="_blank" rel="noopener noreferrer">
+                {/* <a href='#' target="_blank" rel="noopener noreferrer">
                     <img src={gif} alt="" />
-                </a>
+                </a> */}
             </div>
         )
     }

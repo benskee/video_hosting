@@ -9,6 +9,8 @@ import Chart from './views/Chart';
 import Animation from './views/Animation';
 import Upload from './views/Upload';
 import ProjectList from './views/ProjectList';
+import Login from './views/Login';
+import Register from './views/Register';
 
 export default class App extends Component {
   render() {
@@ -27,6 +29,8 @@ export default class App extends Component {
               <Route exact path="/animation" render={() => <Animation />} />
               <Route exact path="/upload" render={props => <Upload {...props}/>} />
               <Route exact path="/projects" render={() => <ProjectList />} />
+              <Route exact path="/login" render={props => <Login {...props}/>} />
+              <Route exact path="/register" render={props => <Register {...props}/>} />
           </Switch>
         </main>
       </div>
