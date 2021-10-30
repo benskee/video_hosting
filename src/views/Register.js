@@ -33,7 +33,6 @@ export default class Register extends Component {
     }
 
     handleChange = ({ currentTarget: input }) => {
-        this.setState({submitted: false})
         const errors = {...this.state.errors}
         const errorMessage = this.validateProperty(input);
         if (errorMessage) errors[input.name] = errorMessage;
@@ -41,18 +40,16 @@ export default class Register extends Component {
 
         const userInput = {...this.state.userInput}
         userInput[input.name] = input.value
-        this.setState({ userInput, errors })
+        this.setState({ userInput, errors, submitted: false })
     }
 
     handleRegister= e => {
         e.preventDefault();
-        this.setState({submitted: true})
         const errors = this.validate()
-        this.setState({ errors: errors || {} })
+        this.setState({ submitted: true, errors: errors || {} })
         if (errors) return
 
         this.props.history.push('/projects')
-        console.log('registered')
     }
 
 
@@ -83,7 +80,7 @@ export default class Register extends Component {
                         <input value={userInput.confirmPassword} onChange={this.handleChange} name="confirmPassword" type="password" className="form-control" placeholder="Confirm Password" label="confirmPassword" aria-describedby="confirmPassword" />
                     </div>
                     {errors.confirmPassword && submitted && <div className="alert alert-danger py-1">{errors.confirmPassword}</div> }
-                    <button className="btn btn-primary" onClick={this.handleRegister}>Register</button>
+                    <button disabled={this.validate()} className="btn btn-primary" onClick={this.handleRegister}>Register</button>
                 </form>
             </div>
         )
