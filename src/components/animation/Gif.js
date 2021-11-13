@@ -14,7 +14,7 @@ export default class Gif extends Component {
         console.log(gif)
         // pDcT ? [gif, link] = [pDcT["gif"], pDcT["link"]] : gif, link = ''
         return (
-            <div className="col-4" style={{ marginLeft: "-100px", marginTop: "100px" }}>
+            <div className="col-4" id= "gif">
                 <img src="../../../public/static/animations/fairy.gif" alt="" />
                 {/* <a href='#' target="_blank" rel="noopener noreferrer">
                     <img src={gif} alt="" />

@@ -11,6 +11,7 @@ import Upload from './views/Upload';
 import ProjectList from './views/ProjectList';
 import Login from './views/Login';
 import Register from './views/Register';
+import "./App.css"
 
 export default class App extends Component {
   render() {

@@ -5,7 +5,7 @@ export default class Upload extends Component {
     state = {
         selectedFile: null,
         files: [],
-        userInput: { userName: '', mediaURL: '', projectName: '', projectType: '', timeAdjust: '' }
+        userInput: { username: '', mediaURL: '', projectName: '', projectType: '', timeAdjust: '' }
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -40,8 +40,8 @@ export default class Upload extends Component {
                 <h1 className="m-3 mb-5" style={{ textAlign: "center" }}>Upload Project</h1>
                 <form className="col-6 m-auto">
                     <div className="input-group mb-3">
-                    <span className="input-group-text" id="userName">User Name</span>
-                    <input value={userInput.userName} onChange={this.handleChange} name="userName" type="text" className="form-control" placeholder="User Name" aria-label="userName" aria-describedby="userName" />
+                    <span className="input-group-text" id="username">username</span>
+                    <input value={userInput.username} onChange={this.handleChange} name="username" type="text" className="form-control" placeholder="username" aria-label="username" aria-describedby="username" />
                     </div>
                     <div className="input-group mb-3">
                     <span className="input-group-text" id="mediaURL">Media URL</span>

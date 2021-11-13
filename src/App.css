@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+#fifthWallLogo {
+    height: 40px;
+    width: 40px;
+}
+
+#gif {
+    margin-left: "-100px";
+    margin-top: "100px";
+}
+
+#right-links {
+    margin-right: 0 "auto";
+}

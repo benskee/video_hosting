@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const File = require('../models/File');
+const User = require('../models/User');
 const multer = require('multer');
 var cors = require('cors');
 router.use(cors())
@@ -32,7 +33,7 @@ router.post('/', function (req, res) {
                 path: req.file.path,
                 body: fileJSON,
                 mediaURL: userInput.mediaURL,
-                userName: userInput.userName,
+                username: userInput.username,
                 projectName: userInput.projectName,
                 projectType: userInput.projectType,
                 timeAdjust: parseInt(userInput.timeAdjust)

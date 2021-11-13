@@ -1,71 +1,42 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Joi from 'joi-browser';
+import Form from '../components/common/Form';
+import { login } from '../services/authService'
 
-export default class Login extends Component {
+export default class Login extends Form {
     state = {
-        userInput: {userName: "", password: ""},
+        data: {username: "", password: ""},
         errors: {}
     }
 
     schema = {
-        userName: Joi.string().required().label('userName'),
+        username: Joi.string().required().label('username'),
         password: Joi.string().min(3).max(15).required(),
     }
 
-    validate = () => {
-        const result = Joi.validate(this.state.userInput, this.schema, { abortEarly: false })
-        if (!result.error) return null;
-
-        const errors = {};
-        for (let item of result.error.details)
-            errors[item.path[0]] = item.message;
-        return errors
-    }
-
-    validateProperty = ({ name, value }) => {
-        const obj = { [name]: value };
-        const schema = { [name]: this.schema[name]}
-        const {error} = Joi.validate(obj, schema)
-        return error ? error.details[0].message : null;
-    }
-
-    handleChange = ({ currentTarget: input }) => {
-        const errors = {...this.state.errors}
-        const errorMessage = this.validateProperty(input);
-        if (errorMessage) errors[input.name] = errorMessage;
-        else delete errors[input.name]
-
-        const userInput = {...this.state.userInput}
-        userInput[input.name] = input.value
-        this.setState({userInput, errors})
-    }
-
-    handleLogin = e => {
-        e.preventDefault();
-        const errors = this.validate()
-        this.setState({errors: errors || {}})
-        if (errors) return
-        this.props.history.push("/projects");
+    doSubmit = async () => {
+        try {
+            const { data } = this.state
+            await login(data.username, data.password)
+            // this.props.history.push("/projects");
+        } catch (err) {
+            if (err.response && err.response.status === 400) {
+                const errors = { ...this.state.errors }
+                errors.username = err.response.data;
+                this.setState({ errors })
+            }            
+        }
     }
 
 
     render() {
-        const { userInput, errors } = this.state
         return (
             <div>
-                <h1 className='m-3 mb-5' style={{ textAlign: "center" }}>Login</h1>
-                <form className="col-6 m-auto">
-                    <div className="input-group mb-3">
-                        <span className="input-group-text" id="userName">User Name</span>
-                        <input value={userInput.userName} onChange={this.handleChange} name="userName" type="text" className="form-control" placeholder="User Name" aria-label="userName" aria-describedby="userName" />
-                    </div>
-                    {errors.userName && <div className="alert alert-danger py-1">{errors.userName}</div> }
-                    <div className="input-group mb-3">
-                        <span className="input-group-text" id="password">Password</span>
-                        <input value={userInput.password} onChange={this.handleChange} name="password" type="password" className="form-control" placeholder="Password" aria-label="password" aria-describedby="password" />
-                    </div>
-                    {errors.password && <div className="alert alert-danger py-1">{errors.password}</div> }
-                    <button className="btn btn-primary" onClick={this.handleLogin}>Login</button>
+                <h1 className='m-3 mb-5'>Login</h1>
+                <form onSubmit={this.handleSubmit} className="col-6 m-auto">
+                    {this.renderInput("username", "Username")}
+                    {this.renderInput("password", "Password", "password")}
+                    {this.renderButton('Login')}
                 </form>
             </div>
         )
