@@ -1,7 +1,7 @@
 import React from 'react';
 import Joi from 'joi-browser';
 import Form from '../components/common/Form';
-import { login } from '../services/authService'
+import auth from '../services/authService'
 
 export default class Login extends Form {
     state = {
@@ -17,8 +17,8 @@ export default class Login extends Form {
     doSubmit = async () => {
         try {
             const { data } = this.state
-            await login(data.username, data.password)
-            // this.props.history.push("/projects");
+            await auth.login(data.username, data.password)
+            window.location = '/projects'
         } catch (err) {
             if (err.response && err.response.status === 400) {
                 const errors = { ...this.state.errors }

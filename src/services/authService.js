@@ -7,9 +7,6 @@ const tokenKey = "token";
 
 // axios.setJwt(getJwt());
 
-// export function login(username, password) {
-//   return axios.post(apiEndpoint, { username, password });
-// }
 export async function login(username, password) {
   const { data: jwt } = await axios.post(apiEndpoint, { username, password });
   localStorage.setItem(tokenKey, jwt);
@@ -19,9 +16,9 @@ export async function login(username, password) {
 //   localStorage.setItem(tokenKey, jwt);
 // }
 
-// export function logout() {
-//   localStorage.removeItem(tokenKey);
-// }
+export function logout() {
+  localStorage.removeItem(tokenKey);
+}
 
 // export function getCurrentUser() {
 //   try {
@@ -37,9 +34,9 @@ export async function login(username, password) {
 // }
 
 export default {
-  login
+  login,
 //   loginWithJwt,
-//   logout,
+  logout
 //   getCurrentUser,
 //   getJwt
 };

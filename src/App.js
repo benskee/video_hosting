@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import CodeProject from './components/codeTutorial/CodeProject';
 import AnimationProject from './components/animation/AnimationProject';
+import Logout from './components/user/Logout';
+import auth from './services/authService'
 import CodeTutorial from './views/CodeTutorial';
 import Home from './views/Home';
 import Chart from './views/Chart';
@@ -14,11 +16,18 @@ import Register from './views/Register';
 import "./App.css"
 
 export default class App extends Component {
+  state = {};
+
+  componentDidMount() {
+    const user = auth.getCurrentUser();
+    this.setState({ user });
+  }
+
   render() {
     return (
       <div>
         <header>
-          <Header />
+          <Header user={this.state.user}/>
         </header>
         <main className="container">
           <Switch>
@@ -31,6 +40,7 @@ export default class App extends Component {
               <Route exact path="/upload" render={props => <Upload {...props}/>} />
               <Route exact path="/projects" render={() => <ProjectList />} />
               <Route exact path="/login" render={props => <Login {...props}/>} />
+              <Route exact path="/logout" render={() => <Logout />} />
               <Route exact path="/register" render={props => <Register {...props}/>} />
           </Switch>
         </main>
