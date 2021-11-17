@@ -37,7 +37,7 @@ export default class App extends Component {
               <Route exact path="/" render={() => <Home />} />
               <Route exact path="/chart" render={() => <Chart />} />
               <Route exact path="/animation" render={() => <Animation />} />
-              <Route exact path="/upload" render={props => <Upload {...props}/>} />
+              <Route exact path="/upload" render={props => <Upload user={this.state.user} {...props}/>} />
               <Route exact path="/projects" render={() => <ProjectList />} />
               <Route exact path="/login" render={props => <Login {...props}/>} />
               <Route exact path="/logout" render={() => <Logout />} />

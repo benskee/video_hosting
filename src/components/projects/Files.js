@@ -13,7 +13,6 @@ export default class Files extends Component {
                         <h6 className="card-subtitle mb-2 text-muted">{file.username}</h6>
                         <p className="card-text mt-4">Type: <b>{file.projectType}</b></p>
                         {file.projectType === 'code' ? <Link to={`/file/${file._id}`} className="btn btn-primary">View Project</Link> : <Link to={`/animation/${file._id}`} className="btn btn-primary">View Project</Link>}
-                        {/* <Link to={`/file/${file.projecttype}/${file._id}`} className="btn btn-primary">View Project</Link> */}
                     </div>
                 </div>
             </React.Fragment>

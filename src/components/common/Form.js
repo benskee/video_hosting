@@ -100,4 +100,23 @@ export default class Form extends Component {
             />
         );
     }
+
+    renderFileSelect(error) {
+        return(
+            <div>
+                <div className="input-group mt-3">
+                    <input type="file" name='selectedFile' id='selectedFile' encType="multipart/form-data" onChange={this.fileSelectedHandler} />
+                </div>
+                {error && <div className="alert alert-danger py-1">{error}</div>}
+            </div>
+        )
+    }
+
+    fileSelectedHandler = e => {
+        const newData = {...this.state.data}
+        newData.selectedFile = e.target.files[0]
+        this.setState({
+            data: newData
+        });
+    };
 }

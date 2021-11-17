@@ -1,75 +1,62 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React from 'react'
+import Joi from 'joi-browser';
+import Form from '../components/common/Form';
+// import auth from './../services/authService'
+// import projectOptions from '../components/common/ProjectOptions'
+import { upload, deleteFile } from './../services/uploadService';
 
-export default class Upload extends Component {
+export default class Upload extends Form {
     state = {
-        selectedFile: null,
-        files: [],
-        userInput: { username: '', mediaURL: '', projectName: '', projectType: '', timeAdjust: '' }
+        errors: {},
+        data: { username: '', selectedFile: null, mediaURL: '', projectName: '', projectType: 'code', timeAdjust: '' }
     };
 
-    handleChange = ({ currentTarget: input }) => {
-        const userInput = {...this.state.userInput}
-        userInput[input.name] = input.value
-        this.setState({ userInput })
+    schema = {
+        projectName: Joi.string().required().label('Project Name'),
+        mediaURL: Joi.string().required().label('Media Url'),
+        timeAdjust: Joi.number().required().label('Time Adjust'),
+        selectedFile: Joi.object().required().error(() => {
+            return {message: 'Please select a file to upload.'}})
+        // projectOptions: Joi.string().required.label('projectOptions')
+    }
+    componentDidMount() {
+        console.log(this.props)
+        // const newData = {...this.state.data}
+        // newData.username = this.props.user.name
+        // this.setState({
+        //     data: newData
+        // });
     }
 
-    fileSelectedHandler = e => {
-        this.setState({
-            selectedFile: e.target.files[0],
-        });
-    };
-
-    fileUploadHandler = async (e) => {
-        e.preventDefault();
-        const { userInput } = this.state;
-        const data = new FormData();
-        const userData = JSON.stringify(userInput)
-        data.append('userInput', userData);
-        data.append('file', this.state.selectedFile);
-        await axios.post('http://localhost:5000/api/file', data);
-
-        this.props.history.push("/projects");
-    };
+    doSubmit = async () => {
+        try {
+            const { data } = this.state;
+            deleteFile()
+            upload(data)
+            
+            this.props.history.push("/projects");
+        } catch (err) {
+            if(err.response && err.response.status === 400) {
+            const errors = { ...this.state.errors };
+            const { type, message } = err.response.data
+            errors[type] = message;
+            this.setState({ errors })
+            }
+        }
+    }
 
     render() {
-        const { userInput } = this.state
 
         return (
             <div>
                 <h1 className="m-3 mb-5" style={{ textAlign: "center" }}>Upload Project</h1>
-                <form className="col-6 m-auto">
-                    <div className="input-group mb-3">
-                    <span className="input-group-text" id="username">username</span>
-                    <input value={userInput.username} onChange={this.handleChange} name="username" type="text" className="form-control" placeholder="username" aria-label="username" aria-describedby="username" />
-                    </div>
-                    <div className="input-group mb-3">
-                    <span className="input-group-text" id="mediaURL">Media URL</span>
-                    <input value={userInput.mediaURL} onChange={this.handleChange} name="mediaURL" type="text" className="form-control" placeholder="Media URL" aria-label="mediaURL" aria-describedby="mediaURL" />
-                    </div>
-                    <div className="input-group mb-3">
-                    <span className="input-group-text" id="projectName">Project Name</span>
-                    <input value={userInput.projectName} onChange={this.handleChange} name="projectName" type="text" className="form-control" placeholder="Project Name" aria-label="projectName" aria-describedby="projectName" />
-                    </div>
-                    <div className="input-group mb-3">
-                    <span className="input-group-text" id="timeAdjust">Time Adjust</span>
-                    <input value={userInput.timeAdjust} onChange={this.handleChange} name="timeAdjust" type="text" className="form-control" placeholder="Time Adjust" aria-label="timeAdjust" aria-describedby="timeAdjust" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <label className="input-group-text">Project Type</label>
-                        </div>
-                        <select className="custom-select" value={userInput.projectType} onChange={this.handleChange} name="projectType" id="projectType">
-                            <option >Choose...</option>
-                            <option value="code">Code</option>
-                            <option value="chartDeck">Chart Deck</option>
-                            <option value="animation">Animation</option>
-                        </select>
-                    </div>
-                    <div className="input-group mb-3">
-                        <input type="file" name='file' encType="multipart/form-data" onChange={this.fileSelectedHandler} />
-                    </div>
-                    <button className="btn btn-primary" onClick={this.fileUploadHandler}>Upload</button>
+                <form onSubmit={this.handleSubmit} className="col-6 m-auto">
+                    {this.renderInput("mediaURL", "Media Url")}
+                    {this.renderInput("projectName", "Project Name")}
+                    {this.renderInput("timeAdjust", "Time Adjust")}
+                    {/* {this.renderSelect("projectOptions", "Project Options", projectOptions)} */}
+                    {this.renderFileSelect(this.state.errors.selectedFile)}
+                    {this.renderButton("Submit")}
                 </form>
             </div>
         )
