@@ -19,8 +19,8 @@ const Header = ({ user }) => {
                             <NavLink link='/code' label='Code' />
                             <NavLink link='/chart' label='Chart' />
                             <NavLink link='/animation' label='Animation' />
-                            <NavLink link='/upload' label='Upload' />
                             <NavLink link='/projects' label='Projects' />
+                            {user && <NavLink link='/upload' label='Upload' />}
                         </ul>
                     </div>
                     <div className="col-2">
