@@ -8,24 +8,29 @@ import { upload, deleteFile } from './../services/uploadService';
 export default class Upload extends Form {
     state = {
         errors: {},
-        data: { username: '', selectedFile: null, mediaURL: '', projectName: '', projectType: 'code', timeAdjust: '' }
+        data: { username: '', selectedFile: null, mediaURL: '', projectName: '', projectType: 'code', timeAdjust: 0 }
     };
 
     schema = {
+        username: Joi.string().required().label('Username'),
         projectName: Joi.string().required().label('Project Name'),
         mediaURL: Joi.string().required().label('Media Url'),
+        projectType: Joi.string().required().label('Project Type'),
         timeAdjust: Joi.number().required().label('Time Adjust'),
         selectedFile: Joi.object().required().error(() => {
             return {message: 'Please select a file to upload.'}})
         // projectOptions: Joi.string().required.label('projectOptions')
     }
     componentDidMount() {
-        console.log(this.props)
-        // const newData = {...this.state.data}
-        // newData.username = this.props.user.name
-        // this.setState({
-        //     data: newData
-        // });
+       const { user } = this.props
+        if (!user) {
+           return this.props.history.push("/login");
+        }
+        const newData = {...this.state.data}
+        newData.username = user.name
+        this.setState({
+            data: newData
+        });
     }
 
     doSubmit = async () => {

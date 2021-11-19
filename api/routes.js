@@ -63,26 +63,6 @@ router.post('/upload', function (req, res) {
     return res.status(200).send('success');
 })
 
-router.post('/', async function (req, res) {
-        try {
-            const userInput = JSON.parse(req.body.userInput)
-            const fileJSON = require('./src/uploads/uploadedFile.json')
-            const newFile = new File({
-                body: fileJSON,
-                mediaURL: userInput.mediaURL,
-                username: userInput.username,
-                projectName: userInput.projectName,
-                projectType: userInput.projectType,
-                timeAdjust: parseInt(userInput.timeAdjust)
-            });
-            await newFile.save();
-        } catch (err) {
-            console.error(err.message);
-            res.status(500).send('Server Error');
-        }
-        return res.status(200).send('success');
-});
-
 router.get('/', async (req, res) => {
     try {
         const files = await File.find({});
