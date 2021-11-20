@@ -93,11 +93,11 @@ router.put('/:id', async function (req, res) {
 })
 
 router.delete('/:id', async function (req,res) {
-    const file = await File.findByIdAndRemove(req.params.id)
+    const file = await File.findByIdAndDelete(req.params.id);
 
     if (!file) 
         return res.status(404).send("The file with the given ID was not found.")
-
+    
     res.send(file)
 })
 

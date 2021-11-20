@@ -41,7 +41,7 @@ export default class EditProject extends Form {
             console.log('here')
             await axios.delete(`http://localhost:5000/api/file/${this.props.match.params.id}`)
             
-            // this.props.history.push("/projects");
+            this.props.history.push("/projects");
         } catch (err) {
             if(err.response && err.response.status === 404) {
                 alert("File already deleted.")
@@ -51,17 +51,17 @@ export default class EditProject extends Form {
 
     doSubmit = async () => {
         try {
-            // const { data } = this.state;
-            // await axios.put(`http://localhost:5000/api/file/${this.props.match.params.id}`, data)
+            const { data } = this.state;
+            await axios.put(`http://localhost:5000/api/file/${this.props.match.params.id}`, data)
             
-            // this.props.history.push("/projects");
+            this.props.history.push("/projects");
         } catch (err) {
-            // if(err.response && err.response.status === 400) {
-            // const errors = { ...this.state.errors };
-            // const { type, message } = err.response.data
-            // errors[type] = message;
-            // this.setState({ errors })
-            // }
+            if(err.response && err.response.status === 400) {
+            const errors = { ...this.state.errors };
+            const { type, message } = err.response.data
+            errors[type] = message;
+            this.setState({ errors })
+            }
         }
     }
 
@@ -72,7 +72,7 @@ export default class EditProject extends Form {
                 <h1 className="m-3 mb-5">Edit Project</h1>
 
                 <div className="col-6 m-auto">
-                    <button className="btn btn-danger mb-4" onClick={this.handleDelete()}>Delete</button>
+                    <button className="btn btn-danger mb-4" onClick={() => this.handleDelete()}>Delete</button>
                     <form onSubmit={this.handleSubmit}>
                         {this.renderInput("mediaURL", "Media Url")}
                         {this.renderInput("projectName", "Project Name")}
