@@ -3,22 +3,15 @@ import React, { Component } from 'react'
 export default class Gif extends Component {
 
     render() {
-        // const projectData = this.props.projectData
-        // const currentTime = this.props.currentTime
-        const { projectData, currentTime } = this.props;
-        // const gif = projectData[currentTime]["gif"];
-        // const link = projectData[currentTime]["link"];
-        const pDcT = projectData[currentTime]
-        let gif = ''
-        pDcT ? gif = pDcT["gif"] : gif = ''
-        console.log(gif)
-        // pDcT ? [gif, link] = [pDcT["gif"], pDcT["link"]] : gif, link = ''
+        const { animationData, currentTime } = this.props
+        const gif = animationData[currentTime]["gif"];
+        const link = animationData[currentTime]["link"];
+        
         return (
             <div className="col-4" id= "gif">
-                <img src="../../../public/static/animations/fairy.gif" alt="" />
-                {/* <a href='#' target="_blank" rel="noopener noreferrer">
+                <a href={link} target="_blank" rel="noopener noreferrer">
                     <img src={gif} alt="" />
-                </a> */}
+                </a>
             </div>
         )
     }
