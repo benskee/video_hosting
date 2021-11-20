@@ -7,6 +7,7 @@ const path = require('path');
 // const uploadService = require('../src/services/uploadService')
 const multer = require('multer');
 var cors = require('cors');
+const { findByIdAndRemove } = require('../models/File');
 router.use(cors())
 
  
@@ -63,12 +64,12 @@ router.post('/upload', function (req, res) {
     return res.status(200).send('success');
 })
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const files = await File.find({});
+        const file = await File.findById(req.params.id);
         res.status(200).json({
             success: true,
-            files
+            file
         });
     } catch (err) {
         console.error(err.message);
@@ -76,12 +77,36 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.put('/:id', async function (req, res) {
+    const file = await File.findByIdAndUpdate(
+        req.params.id, 
+        {
+            mediaURL: req.body.mediaURL,
+            projectName: req.body.projectName,
+            timeAdjust: req.body.timeAdjust
+        }
+)
+    if (!file)
+        return res.status(404).send("The file with the given ID was not found.");
+
+    res.send(file);
+})
+
+router.delete('/:id', async function (req,res) {
+    const file = await File.findByIdAndRemove(req.params.id)
+
+    if (!file) 
+        return res.status(404).send("The file with the given ID was not found.")
+
+    res.send(file)
+})
+
+router.get('/', async (req, res) => {
     try {
-        const file = await File.findById(req.params.id);
+        const files = await File.find({});
         res.status(200).json({
             success: true,
-            file
+            files
         });
     } catch (err) {
         console.error(err.message);

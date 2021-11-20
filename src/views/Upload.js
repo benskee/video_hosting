@@ -1,7 +1,6 @@
 import React from 'react'
 import Joi from 'joi-browser';
 import Form from '../components/common/Form';
-// import auth from './../services/authService'
 // import projectOptions from '../components/common/ProjectOptions'
 import { upload, deleteFile } from './../services/uploadService';
 
@@ -54,7 +53,7 @@ export default class Upload extends Form {
 
         return (
             <div>
-                <h1 className="m-3 mb-5" style={{ textAlign: "center" }}>Upload Project</h1>
+                <h1 className="m-3 mb-5">Upload Project</h1>
                 <form onSubmit={this.handleSubmit} className="col-6 m-auto">
                     {this.renderInput("mediaURL", "Media Url")}
                     {this.renderInput("projectName", "Project Name")}

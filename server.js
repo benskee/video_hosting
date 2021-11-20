@@ -8,7 +8,7 @@ connectDB();
 
 app.use(express.json({ extended: false }))
 
-app.use('/api/file', require('./api/routes'));
+app.use('/api/file', require('./api/file'));
 app.use('/api/users', require('./api/users'));
 app.use('/api/auth', require('./api/auth'));
 

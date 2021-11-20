@@ -27,4 +27,5 @@ yarn-error.log*
 .mp4
 skeevideo.mp4
 /config
-# /src/uploads
+todo.txt
+/src/uploads
