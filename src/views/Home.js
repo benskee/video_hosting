@@ -11,7 +11,7 @@ export default class Home extends Component {
                         <div className="container mt-4">
                             <Link to='./code' style={{ textDecoration: 'none', color: 'black' }}>
                                 <h3>Code</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px' }} src={`./static/images/code_photo.png`}></img>
+                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px' }} src={`./static/images/code_image.png`}></img>
                             </Link>
                         </div>
                     </div>
@@ -19,7 +19,7 @@ export default class Home extends Component {
                         <div className="container mt-3">
                             <Link to='./chart' style={{ textDecoration: 'none', color: 'black' }}>
                                 <h3>Chart Deck</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/chart_image.png`}></img>
+                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/chartDeck_image.png`}></img>
                             </Link>
                         </div>
                     </div>
@@ -27,7 +27,7 @@ export default class Home extends Component {
                         <div className="container mt-3">
                             <Link to='/animation' style={{ textDecoration: 'none', color: 'black' }}>
                                 <h3>Animation</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/animation_image.jpg`}></img>
+                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/animation_image.png`}></img>
                             </Link>
                         </div>
                     </div>

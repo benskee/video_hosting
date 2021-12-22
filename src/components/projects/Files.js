@@ -8,7 +8,7 @@ export default class Files extends Component {
         return (
             <React.Fragment>
                 <div className="card m2" style={{width: "18rem", margin:"5px"}}>
-                    <img className="projectImage" src={"./static/images/code_photo.png"} alt="Project" />
+                    <img className="projectImage" src={`./static/images/${file.projectType}_image.png`} alt="Project" />
                     <div className="card-body">
                         <h5 className="card-title mb-2">{file.projectName}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">{file.username}</h6>
