@@ -7,11 +7,9 @@ export default class TabList extends Component {
         const tabData = this.props.tabData;
         const vals = this.props.vals
         return (
-            <div>
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                     {vals.map(tab => <Tab key={tab} tab={tab} tabData={tabData} currentTime={currentTime}/>)}
                 </ul>
-            </div>
         )
     }
 }

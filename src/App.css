@@ -15,3 +15,58 @@ h1 {
 #right-links {
     margin-right: 0 "auto";
 }
+
+ul {
+    list-style-type: none;
+}
+
+.folder {
+    cursor: pointer;
+    user-select: none;
+}
+
+.folder::before {
+    content: "\02C5";
+    transform: rotate(270deg);
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.folder-down::before {
+    transform: rotate(0deg);
+}
+
+.nested {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.selectedFile {
+    background-color: lightblue;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.fileTree {
+    border-style: solid;
+    border-top: none;
+    height: 100%;
+    padding-left: 16px;
+}
+
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#footer {
+    background-color: lightgray;
+}
+
+.chartImage {
+    max-width: 70%;
+}

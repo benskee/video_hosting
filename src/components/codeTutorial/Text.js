@@ -7,11 +7,11 @@ export default class Text extends Component {
         return (
                 
             <div className="tab-pane fade" style={{ margin: '10px' }} id={tab} role="tabpanel" aria-labelledby={tab + "-tab"}>
-                    <h1>{tab}</h1> <br/>
-                    <pre><code className="language-markup">
-                        {this.props.tabData[currentTime]}
-                    </code></pre>
-                </div>
+                <h1>{tab}</h1> <br/>
+                <pre><code className="language-markup">
+                    {this.props.tabData[currentTime]}
+                </code></pre>
+            </div>
         )
     }
 }

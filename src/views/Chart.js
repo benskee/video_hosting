@@ -30,8 +30,8 @@ export default class Chart extends Component {
                 <ReactPlayer url="https://soundcloud.com/ben-skee-378863056/chart-deck" onProgress={this.handleProgress} controls />
                 <br/>
                 <a href={link} target="_blank" rel="noopener noreferrer">
-                    <div style={{ height: "500px"}}>
-                        <img src={`./static/chartDeck/${slide}_bitstonker.png`} alt="" />
+                    <div className='chartImage'>
+                        <img className='img-fluid' src={`./static/chartDeck/${slide}_bitstonker.png`} alt="" />
                     </div>
                 </a>
             </div>

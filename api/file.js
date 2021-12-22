@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const File = require('../models/File');
-const User = require('../models/User');
 const fs = require('fs')
 const path = require('path');
-// const uploadService = require('../src/services/uploadService')
 const multer = require('multer');
 var cors = require('cors');
-const { findByIdAndRemove } = require('../models/File');
 router.use(cors())
 
  

@@ -4,7 +4,6 @@ import { apiUrl } from "../config.json";
 const apiEndpoint = apiUrl + "/file";
 
 export function upload(data) {
-    console.log(data)
     const fileData = new FormData();
     fileData.append('file', data.selectedFile);
     const inputData = JSON.stringify(data)
