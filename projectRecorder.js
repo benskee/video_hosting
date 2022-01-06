@@ -1,13 +1,20 @@
 const fs = require('fs');
-// const path = require("path");
 const _ = require('lodash');
 
+// Relative path to folder to record
+const root = './'
+
+// Interval between saves in miliseconds
+const interval = 5000
+
+// Regex list of folders to skip
+const skipFolders = /.*node_modules|config|public|\.git/
+
+// Regex list of files to skip
+const skipFiles = /.*setupTests|projectRecorder|reportWebVitals|README|(package-lock\.json)|gitignore/
+
+
 const projectDict = {};
-const root = '../video_tutorial/React_Boilerplate'
-const skipFolders = /.*dicts|uploads|savedFiles|node_modules|config|public|\.git/
-const skipFiles = /.*setupTests|reportWebVitals|README|todo|(package-lock\.json)|gitignore/
-
-
 var s = 0
 
 const copyFile = fileName => {
@@ -42,7 +49,6 @@ const copyFile = fileName => {
 
 const walkDir = dir => {
     var files = fs.readdirSync(dir);
-    console.log('dir', dir)
     for (var i = 0; i < files.length; i++) {
         var currentPath = `${dir}\\${files[i]}`;
         var op = currentPath.replace((root + '\\'), '');
@@ -65,6 +71,7 @@ const walkDir = dir => {
         };
 };
 
+
 const saver = () => {
     walkDir(root);
     var projectString = JSON.stringify(projectDict);
@@ -73,4 +80,4 @@ const saver = () => {
     s++
 }
 
-const saveTime = setInterval(saver, 5000)
+const saveTime = setInterval(saver, interval)
