@@ -3,22 +3,16 @@ import ReactPlayer from 'react-player/youtube'
 import axios from 'axios'
 import Tree from './FileTree';
 import CodeDisplay from '../common/CodeDisplay';
+import codeProjectService from '../../services/codeProjectService';
 const _ = require('lodash');
 
 
-export default class CodeTest extends Component {
+export default class CodeProject extends Component {
     constructor() {
         super();
-        function range(start, end) {
-            var len = end - start + 1;
-            var a = new Array(len);
-            for (let i = 0; i < len; i++) a[i] = (start + i)*5;
-            return a;
-        }
         this.state = {
             projectData: {},
             file: {},
-            stampList: range(0, 50),
             playedSeconds: 0
         }
     }
@@ -32,7 +26,6 @@ export default class CodeTest extends Component {
     }
 
     handleSelect = objectPath => {
-
         this.setState({ selectedFile: _.get(this.state.projectData, objectPath)})
     }
 
@@ -45,24 +38,10 @@ export default class CodeTest extends Component {
         }
     }
 
-    adjust = (sec, timeAdjust) => {
-        if (sec === 0) {
-            return -1;
-        }
-        else if (sec < timeAdjust) {
-            return 0;
-        }
-        else {
-            return sec - (timeAdjust-1);
-        }
-    }
-
     render() {
 
-        const { selectedFile, stampList, file, playedSeconds, projectData } = this.state
-        const adjustedPlayedSeconds = this.adjust(playedSeconds, file.timeAdjust);
-        const currentTime = adjustedPlayedSeconds === -1 ? 0 : Math.max.apply(Math, stampList.filter(function (x) { return x <= adjustedPlayedSeconds }))/5;
-        
+        const { selectedFile, file, playedSeconds, projectData } = this.state
+        const currentTime = codeProjectService.adjust(playedSeconds, file.timeAdjust, file.interval);
 
         return (
             <div className='row'>

@@ -42,7 +42,7 @@ export default class Animation extends Component {
                                 <ReactPlayer url="https://youtu.be/0ZuHI-VW6oo" width="100%" onProgress={this.handleProgress} controls />
                                 {this.renderContainer(div1)}
                             </div>
-                            <Gif currentTime={currentTime} animationData={animationData}/>
+                            <Gif currentTime={currentTime} projectData={animationData}/>
                         </div>
                     </div>
                 </div>

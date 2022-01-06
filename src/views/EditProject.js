@@ -8,13 +8,14 @@ import Form from '../components/common/Form';
 export default class EditProject extends Form {
     state = {
         errors: {},
-        data: { mediaURL: '', projectName: '', timeAdjust: '' }
+        data: { mediaURL: '', projectName: '', timeAdjust: '', interval: '' }
     };
 
     schema = {
         projectName: Joi.string().required().label('Project Name'),
         mediaURL: Joi.string().required().label('Media Url'),
         timeAdjust: Joi.number().required().label('Time Adjust'),
+        interval: Joi.number().required().label('Interval')
     }
     
     async componentDidMount() {
@@ -77,6 +78,7 @@ export default class EditProject extends Form {
                         {this.renderInput("mediaURL", "Media Url")}
                         {this.renderInput("projectName", "Project Name")}
                         {this.renderInput("timeAdjust", "Time Adjust")}
+                        {this.renderInput("interval", "Interval")}
                         {this.renderButton("Submit")}
                     </form>
                 </div>

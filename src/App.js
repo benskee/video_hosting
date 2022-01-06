@@ -42,7 +42,7 @@ export default class App extends Component {
                     <Route path="/code/:id" render={props => <CodeProject  {...props}/>} />
                     <Route path="/animation/:id" render={props => <AnimationProject  {...props}/>} />
                     <Route exact path="/code" render={() => <CodeTutorial />} />
-                    <Route exact path="/chart" render={() => <Chart />} />
+                    <Route path="/chartDeck" render={() => <Chart />} />
                     <Route exact path="/animation" render={() => <Animation />} />
                     <Route exact path="/upload" render={props => <Upload user={this.state.user} {...props}/>} />
                     <Route exact path="/edit/:id" render={props => <EditProject user={this.state.user} {...props}/>} />

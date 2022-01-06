@@ -7,7 +7,7 @@ import { upload, deleteFile } from './../services/uploadService';
 export default class Upload extends Form {
     state = {
         errors: {},
-        data: { username: '', selectedFile: null, mediaURL: '', projectName: '', projectType: 'code', timeAdjust: 0 }
+        data: { username: '', selectedFile: null, mediaURL: '', projectName: '', projectType: 'code', timeAdjust: 0, interval: 5 }
     };
 
     schema = {
@@ -16,6 +16,7 @@ export default class Upload extends Form {
         mediaURL: Joi.string().required().label('Media Url'),
         projectType: Joi.string().required().label('Project Type'),
         timeAdjust: Joi.number().required().label('Time Adjust'),
+        interval: Joi.number().required().label('Interval'),
         selectedFile: Joi.object().required().error(() => {
             return {message: 'Please select a file to upload.'}})
         // projectOptions: Joi.string().required.label('projectOptions')
@@ -58,6 +59,7 @@ export default class Upload extends Form {
                     {this.renderInput("mediaURL", "Media Url")}
                     {this.renderInput("projectName", "Project Name")}
                     {this.renderInput("timeAdjust", "Time Adjust")}
+                    {this.renderInput("interval", "Interval")}
                     {/* {this.renderSelect("projectOptions", "Project Options", projectOptions)} */}
                     {this.renderFileSelect(this.state.errors.selectedFile)}
                     {this.renderButton("Submit")}

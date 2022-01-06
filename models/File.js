@@ -22,6 +22,10 @@ const FileSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    interval: {
+        type: Number,
+        required: true
+    },
     body: {
         type: Object,
         required: false

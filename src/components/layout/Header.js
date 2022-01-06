@@ -15,7 +15,7 @@ const Header = ({ user }) => {
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                     <NavLink link='/' label='Home' />
                     <NavLink link='/code' label='Code' />
-                    <NavLink link='/chart' label='Chart' />
+                    <NavLink link='/chartDeck' label='Chart Deck' />
                     <NavLink link='/animation' label='Animation' />
                     <NavLink link='/projects' label='Projects' />
                     {user && <NavLink link='/upload' label='Upload' />}
