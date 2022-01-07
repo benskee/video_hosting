@@ -26,7 +26,6 @@ yarn-error.log*
 /public/static/audio
 .mp4
 skeevideo.mp4
-/config
 todo.txt
 /src/uploads
 projectFile.json

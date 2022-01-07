@@ -1,7 +1,9 @@
 import axios from "axios";
-import { apiUrl } from "../config.json";
 
-const apiEndpoint = apiUrl + "/file";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+
+const apiEndpoint = "/file";
+
 
 export function upload(data) {
     const fileData = new FormData();
