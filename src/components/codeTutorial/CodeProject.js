@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactPlayer from 'react-player/youtube'
-import axios from 'axios'
 import Tree from './FileTree';
 import CodeDisplay from '../common/CodeDisplay';
 import codeProjectService from '../../services/codeProjectService';
+import { getProject } from './../../services/codeProjectService';
 const _ = require('lodash');
 
 
@@ -18,10 +18,10 @@ export default class CodeProject extends Component {
     }
 
     async componentDidMount() {
-        const project = await axios.get(`http://localhost:5000/api/file/${this.props.match.params.id}`)
+        const project = await getProject(this.props.match.params.id)
         this.setState({
-            projectData: project.data.file.body,
-            file: project.data.file
+            projectData: project.body,
+            file: project
         })
     }
 

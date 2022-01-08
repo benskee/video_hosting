@@ -1,8 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL
-
-const apiEndpoint = "/file";
+const apiEndpoint = process.env.REACT_APP_API_URL + "/file";
 
 
 export function upload(data) {

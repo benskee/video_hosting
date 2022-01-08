@@ -1,10 +1,8 @@
 import jwtDecode from "jwt-decode";
 import axios from 'axios';
 
-const apiEndpoint = "/auth";
+const apiEndpoint = process.env.REACT_APP_API_URL + "/auth";
 const tokenKey = "token";
-
-axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 function setJwt(jwt) {
   axios.defaults.headers.common["x-auth-token"] = jwt;

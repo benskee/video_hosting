@@ -113,6 +113,9 @@ export default class Form extends Component {
     }
 
     fileSelectedHandler = e => {
+        // let test = JSON.parse(e.target.files[0])
+        // console.log(test)
+        console.log(e.target.files[0])
         const newData = {...this.state.data}
         newData.selectedFile = e.target.files[0]
         this.setState({

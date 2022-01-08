@@ -2,6 +2,7 @@ import React from 'react'
 import Joi from 'joi-browser';
 import axios from 'axios'
 import Form from '../components/common/Form';
+import { getProject, updateProject } from '../services/editProjectService';
 // import projectOptions from '../components/common/ProjectOptions'
 
 
@@ -18,6 +19,8 @@ export default class EditProject extends Form {
         interval: Joi.number().required().label('Interval')
     }
     
+    id = this.props.match.params.id
+
     async componentDidMount() {
        const { user } = this.props
        const { data } = this.state
@@ -25,8 +28,7 @@ export default class EditProject extends Form {
            return this.props.history.push("/login");
         }
 
-        const project = await axios.get(`http://localhost:5000/api/file/${this.props.match.params.id}`)
-        const { file } = project.data
+        const file = await getProject(this.id)
         if (user.name !== file.username) {
             return this.props.history.push("/projects")
         }
@@ -52,8 +54,7 @@ export default class EditProject extends Form {
 
     doSubmit = async () => {
         try {
-            const { data } = this.state;
-            await axios.put(`http://localhost:5000/api/file/${this.props.match.params.id}`, data)
+            await updateProject(this.id, this.state.data)
             
             this.props.history.push("/projects");
         } catch (err) {

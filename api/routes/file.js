@@ -10,7 +10,7 @@ router.use(cors());
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'src/uploads');
+        cb(null, '../../src/uploads');
     },
     filename: function (req, file, cb) {
         cb(null, "uploadedFile.json");
@@ -19,31 +19,39 @@ var storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).single("file");
 
-router.delete('/delete', function (req, res) {
-    const directory = './src/uploads';
+router.delete('/delete', async function (req, res) {
+    const directory = './';
 
+    let files = await fs.readdirSync(directory);
     fs.readdirSync(directory, (err, files) => {
         if (err) throw err;
-        for (const file of files) {
-            fs.unlink(path.join(directory, file), err => {
-                if (err) throw err;
-            });
-        }
+
+        // for (const file of files) {
+        //     fs.unlink(path.join(directory, file), err => {
+        //         if (err) throw err;
+        //     });
+        // }
     });
-    return res.status(200).send('success');
+    return res.status(200).send(files);
 
 });
 
-router.post('/upload', function (req, res) {
-    upload(req, res, async function (err) {
-        if (err instanceof multer.MulterError) {
-            return res.status(500).json(err);
-        } else if (err) {
-            return res.status(500).json(err);
-        }
+const multerTest = multer();
+
+router.post('/test', multerTest.any(), async (req, res) => {
+    try {
+        console.log(JSON.parse(req.files[0].buffer.toString()));
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+    return res.status(200).send('success');
+});
+
+router.post('/upload', multerTest.any(), async (req, res) => {
         try {
             const userInput = JSON.parse(req.body.userInput);
-            const fileJSON = require('../src/uploads/uploadedFile.json');
+            const fileJSON = JSON.parse(req.files[0].buffer.toString())
             const newFile = new File({
                 body: fileJSON,
                 mediaURL: userInput.mediaURL,
@@ -58,9 +66,36 @@ router.post('/upload', function (req, res) {
             console.error(err.message);
             res.status(500).send('Server Error');
         }
-    });
     return res.status(200).send('success');
 });
+
+// router.post('/upload', function (req, res) {
+//     upload(req, res, async function (err) {
+//         if (err instanceof multer.MulterError) {
+//             return res.status(500).json(err);
+//         } else if (err) {
+//             return res.status(500).json(err);
+//         }
+//         try {
+//             const userInput = JSON.parse(req.body.userInput);
+//             const fileJSON = require('../../src/uploads/uploadedFile.json');
+//             const newFile = new File({
+//                 body: fileJSON,
+//                 mediaURL: userInput.mediaURL,
+//                 username: userInput.username,
+//                 projectName: userInput.projectName,
+//                 projectType: userInput.projectType,
+//                 timeAdjust: parseInt(userInput.timeAdjust),
+//                 interval: parseInt(userInput.interval)
+//             });
+//             await newFile.save();
+//         } catch (err) {
+//             console.error(err.message);
+//             res.status(500).send('Server Error');
+//         }
+//     });
+//     return res.status(200).send('success');
+// });
 
 router.get('/:id', async (req, res) => {
     try {

@@ -36,8 +36,7 @@ export default class Upload extends Form {
     doSubmit = async () => {
         try {
             const { data } = this.state;
-            deleteFile()
-            upload(data)
+            await upload(data)
             
             this.props.history.push("/projects");
         } catch (err) {
@@ -55,7 +54,7 @@ export default class Upload extends Form {
         return (
             <div>
                 <h1 className="m-3 mb-5">Upload Project</h1>
-                <form onSubmit={this.handleSubmit} className="col-6 m-auto">
+                <form encType="multipart/form-data" onSubmit={this.handleSubmit} className="col-6 m-auto">
                     {this.renderInput("mediaURL", "Media Url")}
                     {this.renderInput("projectName", "Project Name")}
                     {this.renderInput("timeAdjust", "Time Adjust")}

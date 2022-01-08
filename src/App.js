@@ -18,6 +18,7 @@ import Register from './views/Register';
 import "./App.css"
 import CodeTest from './views/CodeTest';
 import Footer from './components/layout/Footer';
+import Test from './views/Test';
 
 export default class App extends Component {
   state = {};
@@ -42,6 +43,7 @@ export default class App extends Component {
                     <Route path="/code/:id" render={props => <CodeProject  {...props}/>} />
                     <Route path="/animation/:id" render={props => <AnimationProject  {...props}/>} />
                     <Route exact path="/code" render={() => <CodeTutorial />} />
+                    <Route exact path="/test" render={() => <Test/>} />
                     <Route path="/chartDeck" render={() => <Chart />} />
                     <Route exact path="/animation" render={() => <Animation />} />
                     <Route exact path="/upload" render={props => <Upload user={this.state.user} {...props}/>} />
