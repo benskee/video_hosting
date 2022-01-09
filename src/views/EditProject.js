@@ -2,7 +2,7 @@ import React from 'react'
 import Joi from 'joi-browser';
 import axios from 'axios'
 import Form from '../components/common/Form';
-import { getProject, updateProject } from '../services/editProjectService';
+import { deleteProject, getProject, updateProject } from '../services/editProjectService';
 // import projectOptions from '../components/common/ProjectOptions'
 
 
@@ -41,8 +41,7 @@ export default class EditProject extends Form {
 
     handleDelete = async () => {
         try {
-            console.log('here')
-            await axios.delete(`http://localhost:5000/api/file/${this.props.match.params.id}`)
+            await deleteProject(this.id)
             
             this.props.history.push("/projects");
         } catch (err) {
