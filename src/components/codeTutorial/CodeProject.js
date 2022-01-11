@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import ReactPlayer from 'react-player/youtube'
 import Tree from './FileTree';
 import CodeDisplay from '../common/CodeDisplay';
-import codeProjectService from '../../services/codeProjectService';
-import { getProject } from './../../services/codeProjectService';
+import {getProject, adjust } from '../../services/codeProjectService';
 const _ = require('lodash');
 
 
@@ -41,7 +40,7 @@ export default class CodeProject extends Component {
     render() {
 
         const { selectedFile, file, playedSeconds, projectData } = this.state
-        const currentTime = codeProjectService.adjust(playedSeconds, file.timeAdjust, file.interval);
+        const currentTime = adjust(playedSeconds, file.timeAdjust, file.interval);
 
         return (
             <div className='row'>

@@ -17,7 +17,8 @@ export function adjust(sec, timeAdjust, interval) {
 }
 
 const codeProjectService = { 
-    adjust
+    adjust,
+    getProject
 }
 
 export default codeProjectService

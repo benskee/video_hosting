@@ -20,8 +20,7 @@ export default class Chart extends Component {
         }
     };
     render() {
-        const playedSeconds = this.state.playedSeconds;
-        const chartData = this.state.chartData
+        const { playedSeconds, chartData } = this.state
         const currentTime = Math.max.apply(Math, Object.keys(this.state.chartData).filter(function (x) { return x <= playedSeconds; }));
         const slide = chartData[currentTime]["slide"]
         const link = chartData[currentTime]["link"]

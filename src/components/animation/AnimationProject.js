@@ -2,30 +2,39 @@ import React, { Component } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import Gif from './Gif'
 import DOMPurify from "dompurify"
-import axios from 'axios';
+import { getProject } from '../../services/codeProjectService';
+const _ = require('lodash');
+
+
+// THIS FEATURE IS NOT ACTIVE
+
 
 export default class Animation extends Component {
     constructor() {
         super();
         this.state = {
             projectData: {},
-            playedSeconds: 0,
-            file: {}
+            file: {},
+            playedSeconds: 0
         };
     }
+
     async componentDidMount() {
-        const project = await axios.get(`http://localhost:5000/api/file/${this.props.match.params.id}`)
+        const project = await getProject(this.props.match.params.id);
         this.setState({
-            projectData: project.data.file.body,
-            file: project.data.file
-        })
+            projectData: project.body,
+            file: project
+        });
     }
+
+    handleSelect = objectPath => {
+        this.setState({ selectedFile: _.get(this.state.projectData, objectPath) });
+    };
 
     handleProgress = state => {
         this.setState({
             playedSeconds: state.playedSeconds
         });
-        
         if (!this.state.seeking) {
             this.setState(state);
         }

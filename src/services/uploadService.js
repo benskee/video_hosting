@@ -11,13 +11,8 @@ export function upload(data) {
     return axios.post(apiEndpoint + '/upload', fileData)
 }
 
-export function deleteFile() {
-    return axios.delete(apiEndpoint + '/delete');
-}
-    
 const uploadService = {
-    upload,
-    deleteFile
+    upload
 }
  
 export default uploadService

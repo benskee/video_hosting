@@ -1,36 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import ImageLink from '../components/common/ImageLink';
 
 export default class Home extends Component {
     render() {
         return (
             <div className="container m-2">
-                <h1 style={{ textAlign: 'center' }}>Welcome to Fifth Wall Media<br /><br /></h1>
+                <h1>Welcome to Fifth Wall Media<br /><br /></h1>
                 <div className='row'>
-                    <div className="col-md-3 col-sm-6">
-                        <div className="container mt-4">
-                            <Link to='./code' style={{ textDecoration: 'none', color: 'black' }}>
-                                <h3>Code</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px' }} src={`./static/images/code_image.png`}></img>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6">
-                        <div className="container mt-3">
-                            <Link to='./chart' style={{ textDecoration: 'none', color: 'black' }}>
-                                <h3>Chart Deck</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/chartDeck_image.png`}></img>
-                            </Link>
-                        </div>
-                    </div>
-                    <div className="col-md-3 col-sm-6">
-                        <div className="container mt-3">
-                            <Link to='/animation' style={{ textDecoration: 'none', color: 'black' }}>
-                                <h3>Animation</h3>
-                                <img alt=""  className="img-fluid pic-1" style={{ height: '150px'}} src={`./static/images/animation_image.png`}></img>
-                            </Link>
-                        </div>
-                    </div>
+                    <ImageLink link='./code' label='Code' image='code' />
+                    <ImageLink link='./chart' label='Chart Deck' image='chartDeck' />
+                    <ImageLink link='./code' label='Code' image='animation' />
                 </div>
             </div>
         );

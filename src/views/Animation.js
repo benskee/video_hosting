@@ -27,9 +27,8 @@ export default class Animation extends Component {
     };
 
     render() {
-        const playedSeconds = this.state.playedSeconds;
-        const animationData = this.state.animationData;
-        const currentTime = Math.max.apply(Math, Object.keys(this.state.animationData).filter(function (x) { return x <= playedSeconds; }));
+        const { playedSeconds, animationData } = this.state
+        const currentTime = Math.max.apply(Math, Object.keys(this.state.animationData).filter      (function (x) { return x <= playedSeconds; }));
         const div1 = animationData[currentTime]["div1"];
 
         return (

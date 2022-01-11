@@ -2,7 +2,7 @@ import React from 'react'
 import Joi from 'joi-browser';
 import Form from '../components/common/Form';
 // import projectOptions from '../components/common/ProjectOptions'
-import { upload, deleteFile } from './../services/uploadService';
+import { upload } from './../services/uploadService';
 
 export default class Upload extends Form {
     state = {

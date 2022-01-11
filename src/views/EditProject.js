@@ -1,6 +1,5 @@
 import React from 'react'
 import Joi from 'joi-browser';
-import axios from 'axios'
 import Form from '../components/common/Form';
 import { deleteProject, getProject, updateProject } from '../services/editProjectService';
 // import projectOptions from '../components/common/ProjectOptions'
