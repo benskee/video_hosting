@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import CodeProject from './components/codeTutorial/CodeProject';
-import FileTree from './components/codeTutorial/FileTree';
+import FileTree from './components/fileTree/FileTree';
 import AnimationProject from './components/animation/AnimationProject';
 import Logout from './components/user/Logout';
 import auth from './services/authService'

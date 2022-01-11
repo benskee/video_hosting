@@ -7,7 +7,7 @@ export default class Animation extends Component {
     constructor() {
         super();
         this.state = {
-            animationData: require('../dicts/animationDict.json'),
+            animationData: require('../JSON/animation.json'),
             playedSeconds: 0
         };
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Branch from '../common/Branch'
-import Leaf from '../common/Leaf';
+import Branch from './Branch'
+import Leaf from './Leaf';
 
 export default class Tree extends Component {
 
@@ -12,7 +12,7 @@ export default class Tree extends Component {
                     if (treeData[branch]["folder"] === true) {
                             return <Branch key={branch} treeData={treeData[branch]} branchName={branch} objectPath={branch}  onSelect={onSelect} selectedFile={selectedFile} currentTime={currentTime}/>
                         } else {
-                            return <Leaf key={branch} name={branch} objectPath={branch} onSelect={onSelect} selectedFile={selectedFile} start={treeData[branch]['start']} currentTime={currentTime}/>
+                            return <Leaf key={branch} name={treeData[branch]['name']} objectPath={branch} onSelect={onSelect} selectedFile={selectedFile} start={treeData[branch]['start']} currentTime={currentTime}/>
                             }
                         }
                 )}

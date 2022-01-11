@@ -13,8 +13,8 @@ export default class CodeTutorial extends Component {
             return a;
         }
         this.state = {
-            // tabData: require('../dicts/testFile'),
-            tabData: require('../dicts/codeDict'),
+            // tabData: require('../JSON/testFile'),
+            tabData: require('../JSON/code'),
             stampList : range(0, 50)
         }
     }
